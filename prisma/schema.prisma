@@ -11,12 +11,11 @@ datasource db {
 }
 
 model User {
-  id       Int       @id @default(autoincrement())
-  email    String    @unique
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
   name     String?
   password String
   posts    Post[]
-  Session  Session[]
 }
 
 model Post {
@@ -26,12 +25,4 @@ model Post {
   published Boolean @default(false)
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
-}
-
-model Session {
-  id        String   @id
-  userId    Int
-  expiresAt DateTime
-
-  user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
