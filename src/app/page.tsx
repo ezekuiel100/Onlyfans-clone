@@ -1,26 +1,15 @@
 import Hero from "./components/hero";
-import {
-  SignedIn,
-  SignedOut,
-  SignIn,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignIn } from "@clerk/nextjs";
 import Sidebar from "./components/Sidebar";
+import UserProfile from "./components/userProfile";
 
 export default function Home() {
   return (
     <>
       <SignedIn>
-        <header className=''>
-          <div className='p-1  bg-red-400'>
-            <UserButton />
-          </div>
-        </header>
-
         <div className='flex max-w-2xl lg:max-w-4xl bg-red-300 mx-auto'>
           <Sidebar />
-          <div className='bg-green-300 w-full '>Feed</div>
+          <UserProfile />
         </div>
       </SignedIn>
 

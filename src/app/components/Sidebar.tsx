@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/nextjs";
 import {
   ClipboardIcon,
   Cog6ToothIcon,
@@ -8,6 +9,8 @@ import Link from "next/link";
 export default function Sidebar() {
   return (
     <nav className='inline-block space-y-3 p-3 lg:w-1/5 h-screen border-r sticky'>
+      <UserButton />
+
       <Link href='#' className='flex gap-1 font-bold'>
         <HomeIcon className='size-6' />
         <span className='hidden lg:block'>Home</span>
