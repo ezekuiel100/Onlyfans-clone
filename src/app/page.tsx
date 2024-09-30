@@ -6,17 +6,20 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/nextjs";
+import Sidebar from "./components/Sidebar";
 
 export default function Home() {
   return (
     <>
-      <header className=' relative '>
-        <SignedIn>
-          <div className='p-1 absolute right-2 inline-block '>
+      <SignedIn>
+        <header className=''>
+          <div className='p-1  bg-red-400'>
             <UserButton />
           </div>
-        </SignedIn>
-      </header>
+        </header>
+
+        <Sidebar />
+      </SignedIn>
 
       <SignedOut>
         <div className='grid grid-cols-2'>
