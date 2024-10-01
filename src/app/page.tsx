@@ -2,6 +2,7 @@ import Hero from "./components/hero";
 import { SignedIn, SignedOut, SignIn } from "@clerk/nextjs";
 import Sidebar from "./components/Sidebar";
 import UserProfile from "./components/UserProfile";
+import Posts from "./components/Posts";
 
 export default function Home() {
   return (
@@ -9,7 +10,9 @@ export default function Home() {
       <SignedIn>
         <div className='flex max-w-2xl lg:max-w-2xl mx-auto border-r'>
           <Sidebar />
-          <UserProfile />
+          <div>
+            <UserProfile />
+          </div>
         </div>
       </SignedIn>
 

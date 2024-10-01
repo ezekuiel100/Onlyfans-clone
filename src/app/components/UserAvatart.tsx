@@ -2,16 +2,16 @@
 
 import { useUser } from "@clerk/nextjs";
 
-export default function UserAvatar() {
+export default function UserAvatar({ size }: { size: String }) {
   const { user } = useUser();
-
-  console.log(user);
 
   return (
     <img
       src={user?.imageUrl}
       alt=''
-      className='rounded-full w-20 h-20  border-2 select-none '
+      className={`rounded-full ${size == "small" && "w-14 h-14"} ${
+        size == "normal" && "w-20 h-20"
+      } border-2 select-none `}
     />
   );
 }

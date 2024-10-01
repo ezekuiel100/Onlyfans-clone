@@ -7,19 +7,22 @@ import {
 } from "@heroicons/react/24/outline";
 import UserAvatar from "./UserAvatart";
 import { useUser } from "@clerk/nextjs";
+import Posts from "./Posts";
 
 export default function UserProfile() {
   const { user } = useUser();
 
   return (
     <>
-      <div className='w-full h-44 bg-blue-300 relative'>
-        <img
-          src='paisagem.webp'
-          className='h-44 w-full object-cover select-none'
-        ></img>
+      <div>
+        <div className='w-full h-44 bg-blue-300 relative'>
+          <img
+            src='paisagem.webp'
+            className='h-44 w-full object-cover select-none'
+          ></img>
 
-        <div className='absolute top-0 bg-black/20  w-full h-full'></div>
+          <div className='absolute top-0 bg-black/20  w-full h-full'></div>
+        </div>
 
         <div className='absolute top-0 p-1 select-none'>
           <p className='text-white text-xl font-semibold'>{user?.fullName}</p>
@@ -43,7 +46,7 @@ export default function UserProfile() {
         </div>
 
         <div className='relative inline-block -mt-7 ml-3 z-50'>
-          <UserAvatar />
+          <UserAvatar size={"normal"} />
           <p className='text-xl font-semibold'>{user?.fullName}</p>
           <p className='text-gray-500 text-sm'>@{user?.username}</p>
         </div>
@@ -65,6 +68,8 @@ export default function UserProfile() {
             4 Midia
           </div>
         </div>
+
+        <Posts user={user} />
       </div>
     </>
   );
