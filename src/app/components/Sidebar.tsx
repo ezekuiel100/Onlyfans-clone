@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function Sidebar() {
   return (
-    <nav className='inline-block space-y-3 p-3 lg:w-1/5 h-screen border-r sticky'>
+    <nav className='inline-block space-y-3 p-3 lg:w-2/6 h-screen border-r sticky'>
       <UserButton />
 
       <Link href='#' className='flex gap-1 font-bold'>

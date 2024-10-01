@@ -3,6 +3,7 @@ import {
   PhotoIcon,
   VideoCameraIcon,
 } from "@heroicons/react/24/outline";
+import UserAvatar from "./UserAvatart";
 
 export default function UserProfile() {
   return (
@@ -12,10 +13,10 @@ export default function UserProfile() {
         className='h-44 w-full object-cover select-none'
       ></img>
 
-      <div className='absolute top-0 z-10 bg-gradient-to-b from-slate-700 to-transparent w-full h-full  '></div>
+      <div className='absolute top-0 bg-black/20  w-full h-full'></div>
 
-      <div className='absolute top-0 p-1 z-20'>
-        <div className='text-white font-semibold'>Jhon harris</div>
+      <div className='absolute top-0 p-1 z-20 select-none'>
+        <p className='text-white text-xl font-semibold'>Jhon harris</p>
 
         <div className='flex gap-2'>
           <div className='flex gap-1 text-white'>
@@ -34,6 +35,8 @@ export default function UserProfile() {
           </div>
         </div>
       </div>
+
+      <UserAvatar />
     </div>
   );
 }
