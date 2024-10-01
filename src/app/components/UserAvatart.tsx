@@ -5,6 +5,8 @@ import { useUser } from "@clerk/nextjs";
 export default function UserAvatar() {
   const { user } = useUser();
 
+  console.log(user);
+
   return (
     <img
       src={user?.imageUrl}

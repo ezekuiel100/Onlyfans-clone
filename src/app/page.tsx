@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <SignedIn>
-        <div className='flex max-w-2xl lg:max-w-2xl mx-auto'>
+        <div className='flex max-w-2xl lg:max-w-2xl mx-auto border-r'>
           <Sidebar />
           <UserProfile />
         </div>
