@@ -16,18 +16,18 @@ const menu = [
 
 export default function Sidebar() {
   return (
-    <nav className='inline-block space-y-3 p-3 lg:w-2/6 h-screen border-r sticky'>
+    <nav className='flex flex-col items-center lg:items-stretch space-y-3 p-3 pr-9 lg:w-64 h-screen border-r sticky top-0'>
       <UserButton />
 
-      <ul className='space-y-4'>
+      <ul className='space-y-4 '>
         {menu.map((menu, i) => (
           <li key={i}>
             <Link
               href={menu.href}
-              className='flex gap-1 font-bold text-gray-500 hover:bg-blue-100 hover:text-blue-400 rounded-full p-2'
+              className='flex items-center gap-2 font-bold text-gray-500 hover:bg-blue-100 hover:text-blue-400 rounded-full p-2'
             >
               {menu.icon}
-              <span className='hidden lg:block'>{menu.text}</span>
+              <span className='hidden lg:block text-lg'>{menu.text}</span>
             </Link>
           </li>
         ))}
