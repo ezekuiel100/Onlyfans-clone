@@ -8,9 +8,15 @@ import {
 import UserAvatar from "./UserAvatart";
 import { useUser } from "@clerk/nextjs";
 import Posts from "./Posts";
+import { useState } from "react";
 
 export default function UserProfile() {
   const { user } = useUser();
+  const [tab, setTab] = useState("posts");
+
+  if (!user) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <>
@@ -48,7 +54,7 @@ export default function UserProfile() {
         <div className='relative inline-block -mt-7 ml-3 z-50'>
           <UserAvatar size={"normal"} />
           <p className='text-xl font-semibold'>{user?.fullName}</p>
-          <p className='text-gray-500 text-sm'>@{user?.username}</p>
+          <p className='text-gray-500'>@{user?.username}</p>
         </div>
 
         <div className='px-2 py-4 border-b'>
@@ -61,15 +67,34 @@ export default function UserProfile() {
         <div className='bg-gray-100 h-2'></div>
 
         <div className='flex gap-2 font-semibold p-1 justify-around cursor-pointer border-b '>
-          <div className='hover:bg-blue-100 hover:text-blue-500 flex-1 text-center text-gray-400 py-1 rounded-sm transition-all'>
-            5 Posts
+          <div className='flex-1 relative'>
+            <div
+              onClick={() => setTab("posts")}
+              className={`hover:bg-blue-100 hover:text-blue-500  text-center text-gray-400 py-1 m-1 rounded-sm transition-all `}
+            >
+              5 Posts
+            </div>
+
+            {tab === "posts" && (
+              <div className={`absolute h-1 w-full bg-blue-400`}></div>
+            )}
           </div>
-          <div className='hover:bg-blue-100 hover:text-blue-500  flex-1 text-center text-gray-400 py-1 rounded-sm transition-all'>
-            4 Midia
+
+          <div className='flex-1 relative'>
+            <div
+              onClick={() => setTab("midia")}
+              className='hover:bg-blue-100 hover:text-blue-500 text-center text-gray-400 py-1 m-1 rounded-sm transition-all'
+            >
+              4 Midia
+            </div>
+
+            {tab === "midia" && (
+              <div className={`absolute h-1 w-full bg-blue-400`}></div>
+            )}
           </div>
         </div>
 
-        <Posts user={user} />
+        {tab === "posts" && <Posts user={user} />}
       </div>
     </>
   );

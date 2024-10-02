@@ -1,9 +1,8 @@
-import { describe } from "node:test";
 import UserAvatar from "./UserAvatart";
 
 type UserType = {
-  fullName: String;
-  username: String;
+  fullName: String | null;
+  username: String | null;
 };
 
 export default function Posts({ user }: { user: UserType }) {
@@ -12,12 +11,18 @@ export default function Posts({ user }: { user: UserType }) {
 
   return (
     <div>
-      <div className='flex p-2'>
-        <UserAvatar size={"small"} />
-        <div>
-          <p className='font-semibold text-lg'>{user?.fullName}</p>
-          <p className='text-gray-400'>@{user?.username}</p>
+      <div className='flex p-2 justify-between'>
+        <div className='flex gap-1'>
+          <UserAvatar size={"small"} />
+          <div>
+            <p className='font-semibold text-lg'>{user?.fullName}</p>
+            <p className='text-gray-400'>@{user?.username}</p>
+          </div>
         </div>
+
+        <span className='text-gray-400 hover:text-blue-400 cursor-pointer hover:underline'>
+          10h
+        </span>
       </div>
 
       {description && (
