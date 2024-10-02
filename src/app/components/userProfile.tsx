@@ -66,7 +66,7 @@ export default function UserProfile() {
 
         <div className='bg-gray-100 h-2'></div>
 
-        <div className='flex gap-2 font-semibold p-1 justify-around cursor-pointer border-b '>
+        <div className='flex gap-2 font-semibold  justify-around cursor-pointer border-b '>
           <div className='flex-1 relative'>
             <div
               onClick={() => setTab("posts")}
@@ -76,7 +76,7 @@ export default function UserProfile() {
             </div>
 
             {tab === "posts" && (
-              <div className={`absolute h-1 w-full bg-blue-400`}></div>
+              <div className={`absolute h-[1px] w-full bg-blue-400`}></div>
             )}
           </div>
 
@@ -89,7 +89,7 @@ export default function UserProfile() {
             </div>
 
             {tab === "midia" && (
-              <div className={`absolute h-1 w-full bg-blue-400`}></div>
+              <div className={`absolute h-[1px] w-full bg-blue-400`}></div>
             )}
           </div>
         </div>
