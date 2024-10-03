@@ -3,12 +3,14 @@
 import Hero from "./components/hero";
 import { SignedIn, SignedOut, SignIn, useUser } from "@clerk/nextjs";
 import Posts from "./components/Posts";
+import NewPost from "./components/NewPost";
 
 export default function Home() {
   return (
     <>
       <SignedIn>
         <div className='max-w-xl lg:w-2xl border-r'>
+          <NewPost />
           <Posts />
         </div>
       </SignedIn>
