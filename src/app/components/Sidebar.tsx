@@ -8,10 +8,18 @@ import {
 import Link from "next/link";
 
 const menu = [
-  { text: "Home", icon: <HomeIcon className='size-6' />, href: "#" },
-  { text: "Notifications", icon: <BellIcon className='size-6' />, href: "#" },
-  { text: "Profile", icon: <UserIcon className='size-6' />, href: "#" },
-  { text: "Settings", icon: <Cog6ToothIcon className='size-6' />, href: "#" },
+  { text: "Home", icon: <HomeIcon className='size-6' />, href: "/" },
+  {
+    text: "Notifications",
+    icon: <BellIcon className='size-6' />,
+    href: "notifications",
+  },
+  { text: "Profile", icon: <UserIcon className='size-6' />, href: "profile" },
+  {
+    text: "Settings",
+    icon: <Cog6ToothIcon className='size-6' />,
+    href: "settings",
+  },
 ];
 
 export default function Sidebar() {

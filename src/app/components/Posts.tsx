@@ -1,13 +1,15 @@
+import { useUser } from "@clerk/nextjs";
 import UserAvatar from "./UserAvatart";
 
-type UserType = {
-  fullName: String | null;
-  username: String | null;
-};
+export default function Posts() {
+  const { user } = useUser();
 
-export default function Posts({ user }: { user: UserType }) {
   const description = true;
   const image = true;
+
+  if (!user) {
+    return <>Carregando...</>;
+  }
 
   return (
     <div>

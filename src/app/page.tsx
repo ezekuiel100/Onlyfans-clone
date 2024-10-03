@@ -1,13 +1,15 @@
+"use client";
+
 import Hero from "./components/hero";
-import { SignedIn, SignedOut, SignIn } from "@clerk/nextjs";
-import UserProfile from "./components/UserProfile";
+import { SignedIn, SignedOut, SignIn, useUser } from "@clerk/nextjs";
+import Posts from "./components/Posts";
 
 export default function Home() {
   return (
     <>
       <SignedIn>
-        <div className='max-w-xl lg:max-w-2xl border-r'>
-          <UserProfile />
+        <div className='max-w-xl lg:w-2xl border-r'>
+          <Posts />
         </div>
       </SignedIn>
 
