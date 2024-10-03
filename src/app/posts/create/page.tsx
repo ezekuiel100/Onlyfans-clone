@@ -2,8 +2,8 @@ import { ArrowLongLeftIcon, PhotoIcon } from "@heroicons/react/24/outline";
 
 export default function NewPost() {
   return (
-    <>
-      <div className='flex justify-between p-2'>
+    <div className='w-full lg:max-w-[38rem] border-r'>
+      <div className='flex justify-between p-2 '>
         <div className='flex items-center gap-1'>
           <div className='p-1 rounded-full hover:bg-blue-100/50 hover:text-blue-500 transition-all'>
             <ArrowLongLeftIcon className='size-7 cursor-pointer' />
@@ -20,7 +20,6 @@ export default function NewPost() {
           </button>
         </div>
       </div>
-
       <div className='w-full resize-none border-y p-2 '>
         <textarea
           className='w-full resize-none outline-none'
@@ -29,8 +28,7 @@ export default function NewPost() {
 
         <PhotoIcon className='size-6 cursor-pointer text-gray-500' />
       </div>
-
       <div className='bg-gray-100 h-2'></div>
-    </>
+    </div>
   );
 }

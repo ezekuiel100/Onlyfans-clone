@@ -3,13 +3,13 @@
 import Hero from "./components/hero";
 import { SignedIn, SignedOut, SignIn, useUser } from "@clerk/nextjs";
 import Posts from "./components/Posts";
-import NewPost from "./components/NewPost";
+import NewPost from "./components/HomePost";
 
 export default function Home() {
   return (
     <>
       <SignedIn>
-        <div className='max-w-xl lg:w-2xl border-r'>
+        <div className='w-full lg:max-w-[38rem] border-r'>
           <NewPost />
           <Posts />
         </div>
