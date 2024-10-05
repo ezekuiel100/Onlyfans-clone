@@ -1,5 +1,10 @@
 import { useUser } from "@clerk/nextjs";
 import UserAvatar from "./UserAvatart";
+import {
+  BookmarkIcon,
+  ChatBubbleOvalLeftIcon,
+  HeartIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Posts() {
   const { user } = useUser();
@@ -12,8 +17,8 @@ export default function Posts() {
   }
 
   return (
-    <div>
-      <div className='flex p-2 justify-between'>
+    <div className='border-b '>
+      <div className='flex p-2 justify-between '>
         <div className='flex gap-1'>
           <UserAvatar size={"small"} />
           <div>
@@ -37,6 +42,14 @@ export default function Posts() {
       )}
 
       {image && <img src='horse-1.png'></img>}
+
+      <div className='flex justify-between items-center p-1 py-3 text-gray-500'>
+        <div className='flex gap-2'>
+          <HeartIcon className='size-6 cursor-pointer' />
+          <ChatBubbleOvalLeftIcon className='size-6 cursor-pointer' />
+        </div>
+        <BookmarkIcon className='size-6 cursor-pointer' />
+      </div>
     </div>
   );
 }
