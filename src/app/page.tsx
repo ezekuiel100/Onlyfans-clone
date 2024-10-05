@@ -2,14 +2,14 @@
 
 import Hero from "./components/hero";
 import { SignedIn, SignedOut, SignIn, useUser } from "@clerk/nextjs";
-import Posts from "./components/Posts";
+import Posts from "./components/Post";
 import NewPost from "./components/HomePost";
 
 export default function Home() {
   return (
     <>
       <SignedIn>
-        <div className='w-full lg:max-w-[38rem] border-r'>
+        <div className='w-full lg:max-w-[38rem] border-r pb-10'>
           <NewPost />
           <Posts />
         </div>
@@ -18,7 +18,7 @@ export default function Home() {
       <SignedOut>
         <div className='grid grid-cols-2 justify-center items-center'>
           <Hero />
-          <div className=' m-auto'>
+          <div className='m-auto '>
             <SignIn routing='hash' />
           </div>
         </div>

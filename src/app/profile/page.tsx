@@ -9,7 +9,7 @@ import {
 import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import UserAvatar from "../components/UserAvatart";
-import Posts from "../components/Posts";
+import Posts from "../components/Post";
 
 export default function Profile() {
   const { user } = useUser();

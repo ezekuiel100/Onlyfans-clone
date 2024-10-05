@@ -5,15 +5,16 @@ import {
   ChatBubbleOvalLeftIcon,
   HeartIcon,
 } from "@heroicons/react/24/outline";
+import PostSkeleton from "./PostSkeleton";
 
-export default function Posts() {
+export default function Post() {
   const { user } = useUser();
 
   const description = true;
   const image = true;
 
-  if (!user) {
-    return <>Carregando...</>;
+  if (!false) {
+    return <PostSkeleton />;
   }
 
   return (
@@ -21,6 +22,7 @@ export default function Posts() {
       <div className='flex p-2 justify-between '>
         <div className='flex gap-1'>
           <UserAvatar size={"small"} />
+
           <div>
             <p className='font-semibold text-lg'>{user?.fullName}</p>
             <p className='text-gray-400'>@{user?.username}</p>
