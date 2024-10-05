@@ -13,7 +13,7 @@ export default function Post() {
   const description = true;
   const image = true;
 
-  if (!false) {
+  if (!user) {
     return <PostSkeleton />;
   }
 

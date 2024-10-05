@@ -20,7 +20,7 @@ export default function Profile() {
   }
 
   return (
-    <div className='max-w-xl lg:w-2xl border-r'>
+    <div className='max-w-xl lg:w-2xl border-r pb-10'>
       <div className='w-full h-44 bg-blue-300 relative'>
         <img
           src='paisagem.webp'
