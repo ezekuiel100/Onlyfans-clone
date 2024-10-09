@@ -9,7 +9,7 @@ export default function ProfilePage() {
 
   return (
     <>
-      <div className='max-w-xl lg:w-2xl border-r pb-10'>
+      <div className='max-w-xl w-full lg:w-2xl border-r pb-10'>
         <Profile tab={tab} setTab={setTab} />
         {tab === "posts" && <Posts />}
       </div>

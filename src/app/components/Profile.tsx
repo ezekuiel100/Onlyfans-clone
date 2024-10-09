@@ -9,6 +9,8 @@ import {
 import { useUser } from "@clerk/nextjs";
 import UserAvatar from "../components/UserAvatart";
 import { Dispatch, SetStateAction } from "react";
+import { useParams } from "next/navigation";
+import SubscribeButton from "./SubscribeButton";
 
 export default function Profile({
   tab,
@@ -18,6 +20,9 @@ export default function Profile({
   setTab: Dispatch<SetStateAction<string>>;
 }) {
   const { user } = useUser();
+  const { username } = useParams();
+
+  console.log(user?.username);
 
   if (!user) {
     return <div>Carregando...</div>;
@@ -33,7 +38,6 @@ export default function Profile({
 
         <div className='absolute top-0 bg-black/20  w-full h-full'></div>
       </div>
-
       <div className='absolute top-0 py-1 px-4 select-none'>
         <div className='flex gap-2 items-center'>
           <div className='p-1 rounded-full hover:bg-white/10 '>
@@ -62,21 +66,23 @@ export default function Profile({
           </div>
         </div>
       </div>
-
       <div className='relative inline-block -mt-7 ml-3 z-50'>
         <UserAvatar size={"normal"} />
         <p className='text-xl font-semibold'>{user?.fullName}</p>
         <p className='text-gray-500'>@{user?.username}</p>
       </div>
-
-      <div className='px-2 py-4 border-b'>
+      <div className='px-2 py-4'>
         The copyright of the material contained on my OnlyFans page (Including
         All Images & Video material) is owned by me. You do not have permission
         to Use, Copy, Reproduce, Print, or Play any of my material outside of My
         OnlyFans page.
       </div>
 
-      <div className='bg-gray-100 h-2'></div>
+      <div className='bg-gray-100 h-2 border-t'></div>
+
+      {username != user.username && <SubscribeButton />}
+
+      <div className='bg-gray-100 h-2 border-t'></div>
 
       <div className='flex gap-2 font-semibold  justify-around cursor-pointer border-b '>
         <div className='flex-1 relative'>
