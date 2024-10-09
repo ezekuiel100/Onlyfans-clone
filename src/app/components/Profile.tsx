@@ -7,20 +7,24 @@ import {
   VideoCameraIcon,
 } from "@heroicons/react/24/outline";
 import { useUser } from "@clerk/nextjs";
-import { useState } from "react";
 import UserAvatar from "../components/UserAvatart";
-import Posts from "../components/Post";
+import { Dispatch, SetStateAction } from "react";
 
-export default function Profile() {
+export default function Profile({
+  tab,
+  setTab,
+}: {
+  tab: string;
+  setTab: Dispatch<SetStateAction<string>>;
+}) {
   const { user } = useUser();
-  const [tab, setTab] = useState("posts");
 
   if (!user) {
     return <div>Carregando...</div>;
   }
 
   return (
-    <div className='max-w-xl lg:w-2xl border-r pb-10'>
+    <>
       <div className='w-full h-44 bg-blue-300 relative'>
         <img
           src='paisagem.webp'
@@ -101,8 +105,6 @@ export default function Profile() {
           )}
         </div>
       </div>
-
-      {tab === "posts" && <Posts />}
-    </div>
+    </>
   );
 }
