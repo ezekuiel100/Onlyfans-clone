@@ -2,6 +2,7 @@
 
 import {
   ArrowLongLeftIcon,
+  Cog6ToothIcon,
   HeartIcon,
   PhotoIcon,
   VideoCameraIcon,
@@ -22,8 +23,6 @@ export default function Profile({
   const { user } = useUser();
   const { username } = useParams();
 
-  console.log(user?.username);
-
   if (!user) {
     return <div>Carregando...</div>;
   }
@@ -38,6 +37,7 @@ export default function Profile({
 
         <div className='absolute top-0 bg-black/20  w-full h-full'></div>
       </div>
+
       <div className='absolute top-0 py-1 px-4 select-none'>
         <div className='flex gap-2 items-center'>
           <div className='p-1 rounded-full hover:bg-white/10 '>
@@ -66,11 +66,21 @@ export default function Profile({
           </div>
         </div>
       </div>
-      <div className='relative inline-block -mt-7 ml-3 z-50'>
+
+      <div className='relative grid grid-cols-2 -mt-7 ml-3  z-50 '>
         <UserAvatar size={"normal"} />
-        <p className='text-xl font-semibold'>{user?.fullName}</p>
-        <p className='text-gray-500'>@{user?.username}</p>
+
+        <button className='p-2 px-4 h-11 border flex gap-1 max-w-fit place-self-end mr-3 border-blue-200 hover:border-blue-400 rounded-full uppercase text-blue-500 hover:bg-blue-100  transition-all'>
+          <Cog6ToothIcon className='size-6 text-blue-500' />
+          edit profile
+        </button>
+
+        <div>
+          <p className='text-xl font-semibold'>{user?.fullName}</p>
+          <p className='text-gray-500'>@{user?.username}</p>
+        </div>
       </div>
+
       <div className='px-2 py-4'>
         The copyright of the material contained on my OnlyFans page (Including
         All Images & Video material) is owned by me. You do not have permission
