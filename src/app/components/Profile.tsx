@@ -2,12 +2,13 @@
 
 import { useUser } from "@clerk/nextjs";
 import UserAvatar from "../components/UserAvatart";
-import { Dispatch, SetStateAction } from "react";
 import { useParams } from "next/navigation";
 import SubscribeButton from "./SubscribeButton";
 import ProfileDescription from "./ProfileDescription";
 import ProfileStats from "./ProfileStats";
 import EditProfileButton from "./EditProfileButton";
+import ContentTabs from "./ContentTabs";
+import { Dispatch, SetStateAction } from "react";
 
 export default function Profile({
   tab,
@@ -38,7 +39,6 @@ export default function Profile({
 
       <div className='relative grid grid-cols-2 -mt-7 ml-3  z-50 '>
         <UserAvatar size={"normal"} />
-
         <EditProfileButton />
 
         <div>
@@ -55,33 +55,7 @@ export default function Profile({
 
       <div className='bg-gray-100 h-2 border-t'></div>
 
-      <div className='flex gap-2 font-semibold  justify-around cursor-pointer border-b '>
-        <div className='flex-1 relative'>
-          <div
-            onClick={() => setTab("posts")}
-            className={`hover:bg-blue-100 hover:text-blue-500  text-center text-gray-400 py-1 m-1 rounded-sm transition-all `}
-          >
-            5 Posts
-          </div>
-
-          {tab === "posts" && (
-            <div className={`absolute h-[1px] w-full bg-blue-400`}></div>
-          )}
-        </div>
-
-        <div className='flex-1 relative'>
-          <div
-            onClick={() => setTab("midia")}
-            className='hover:bg-blue-100 hover:text-blue-500 text-center text-gray-400 py-1 m-1 rounded-sm transition-all'
-          >
-            4 Midia
-          </div>
-
-          {tab === "midia" && (
-            <div className={`absolute h-[1px] w-full bg-blue-400`}></div>
-          )}
-        </div>
-      </div>
+      <ContentTabs tab={tab} setTab={setTab} />
     </>
   );
 }
