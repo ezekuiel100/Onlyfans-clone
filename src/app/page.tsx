@@ -8,13 +8,6 @@ import NewPost from "./components/HomePost";
 export default function Home() {
   return (
     <>
-      <SignedIn>
-        <div className='w-full lg:max-w-[38rem] border-r pb-10'>
-          <NewPost />
-          <Posts />
-        </div>
-      </SignedIn>
-
       <SignedOut>
         <div className='grid grid-cols-2 justify-center items-center'>
           <Hero />
@@ -23,6 +16,13 @@ export default function Home() {
           </div>
         </div>
       </SignedOut>
+
+      <SignedIn>
+        <div className='w-full lg:max-w-[38rem] border-r pb-10'>
+          <NewPost />
+          <Posts />
+        </div>
+      </SignedIn>
     </>
   );
 }

@@ -1,17 +1,13 @@
 "use client";
 
-import {
-  ArrowLongLeftIcon,
-  Cog6ToothIcon,
-  HeartIcon,
-  PhotoIcon,
-  VideoCameraIcon,
-} from "@heroicons/react/24/outline";
+import { Cog6ToothIcon } from "@heroicons/react/24/outline";
 import { useUser } from "@clerk/nextjs";
 import UserAvatar from "../components/UserAvatart";
 import { Dispatch, SetStateAction } from "react";
 import { useParams } from "next/navigation";
 import SubscribeButton from "./SubscribeButton";
+import ProfileDescription from "./ProfileDescription";
+import ProfileHeader from "./ProfileHeader";
 
 export default function Profile({
   tab,
@@ -38,34 +34,7 @@ export default function Profile({
         <div className='absolute top-0 bg-black/20  w-full h-full'></div>
       </div>
 
-      <div className='absolute top-0 py-1 px-4 select-none'>
-        <div className='flex gap-2 items-center'>
-          <div className='p-1 rounded-full hover:bg-white/10 '>
-            <ArrowLongLeftIcon className='size-7 text-white cursor-pointer ' />
-          </div>
-
-          <div>
-            <p className='text-white text-xl font-semibold'>{user?.fullName}</p>
-
-            <div className='flex gap-2'>
-              <div className='flex gap-1 text-white'>
-                <PhotoIcon className='size-6' />
-                35
-              </div>
-
-              <div className='flex gap-1 text-white'>
-                <VideoCameraIcon className='size-6' />
-                20
-              </div>
-
-              <div className='flex gap-1 text-white'>
-                <HeartIcon className='size-6 ' />
-                540
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ProfileHeader user={user} />
 
       <div className='relative grid grid-cols-2 -mt-7 ml-3  z-50 '>
         <UserAvatar size={"normal"} />
@@ -81,12 +50,7 @@ export default function Profile({
         </div>
       </div>
 
-      <div className='px-2 py-4'>
-        The copyright of the material contained on my OnlyFans page (Including
-        All Images & Video material) is owned by me. You do not have permission
-        to Use, Copy, Reproduce, Print, or Play any of my material outside of My
-        OnlyFans page.
-      </div>
+      <ProfileDescription />
 
       <div className='bg-gray-100 h-2 border-t'></div>
 
