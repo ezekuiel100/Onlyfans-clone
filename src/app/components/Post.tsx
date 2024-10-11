@@ -1,11 +1,11 @@
 import { useUser } from "@clerk/nextjs";
-import UserAvatar from "./UserAvatart";
 import {
   BookmarkIcon,
   ChatBubbleOvalLeftIcon,
   HeartIcon,
 } from "@heroicons/react/24/outline";
 import PostSkeleton from "./PostSkeleton";
+import PostHeader from "./PostHeader";
 
 export default function Post() {
   const { user } = useUser();
@@ -19,20 +19,7 @@ export default function Post() {
 
   return (
     <div className='border-b '>
-      <div className='flex p-2 justify-between '>
-        <div className='flex gap-1'>
-          <UserAvatar size={"small"} />
-
-          <div>
-            <p className='font-semibold text-lg'>{user?.fullName}</p>
-            <p className='text-gray-400'>@{user?.username}</p>
-          </div>
-        </div>
-
-        <span className='text-gray-400 hover:text-blue-400 cursor-pointer hover:underline'>
-          10h
-        </span>
-      </div>
+      <PostHeader user={user} />
 
       {description && (
         <p className='px-2 pb-2'>
