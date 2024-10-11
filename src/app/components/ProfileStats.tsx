@@ -14,7 +14,7 @@ export default function ProfileStats({
   return (
     <div className='absolute top-0 py-1 px-4 select-none'>
       <div className='flex gap-2 items-center'>
-        <BackButton />
+        <BackButton colorClass='text-white' hoverClass='hover:bg-white/10' />
 
         <div>
           <p className='text-white text-xl font-semibold'>{user?.fullName}</p>

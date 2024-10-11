@@ -1,9 +1,17 @@
 import { ArrowLongLeftIcon } from "@heroicons/react/24/outline";
 
-export default function BackButton() {
+export default function BackButton({
+  colorClass,
+  hoverClass,
+}: {
+  colorClass: string;
+  hoverClass: string;
+}) {
   return (
-    <div className='p-1 rounded-full hover:bg-white/10 '>
-      <ArrowLongLeftIcon className='size-7 text-white cursor-pointer ' />
+    <div className={`p-1 rounded-full ${hoverClass} transition-all `}>
+      <ArrowLongLeftIcon
+        className={`size-7 cursor-pointer ${colorClass} transition-all`}
+      />
     </div>
   );
 }
