@@ -1,14 +1,17 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
-import UserAvatar from "../components/UserAvatart";
 import { useParams } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
+
+import UserAvatar from "../components/UserAvatart";
 import SubscribeButton from "./SubscribeButton";
 import ProfileDescription from "./ProfileDescription";
 import ProfileStats from "./ProfileStats";
 import EditProfileButton from "./EditProfileButton";
 import ContentTabs from "./ContentTabs";
-import { Dispatch, SetStateAction } from "react";
+import ProfileHeader from "./ProfileHeader";
+import UserInfo from "./UserInfo";
 
 export default function Profile({
   tab,
@@ -26,14 +29,7 @@ export default function Profile({
 
   return (
     <>
-      <div className='w-full h-44 bg-blue-300 relative'>
-        <img
-          src='paisagem.webp'
-          className='h-44 w-full object-cover select-none'
-        ></img>
-
-        <div className='absolute top-0 bg-black/20  w-full h-full'></div>
-      </div>
+      <ProfileHeader />
 
       <ProfileStats user={user} />
 
@@ -41,10 +37,7 @@ export default function Profile({
         <UserAvatar size={"normal"} />
         <EditProfileButton />
 
-        <div>
-          <p className='text-xl font-semibold'>{user?.fullName}</p>
-          <p className='text-gray-500'>@{user?.username}</p>
-        </div>
+        <UserInfo user={user} />
       </div>
 
       <ProfileDescription />
