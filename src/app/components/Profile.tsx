@@ -12,6 +12,7 @@ import EditProfileButton from "./EditProfileButton";
 import ContentTabs from "./ContentTabs";
 import ProfileHeader from "./ProfileHeader";
 import UserInfo from "./UserInfo";
+import ProfileSkeleton from "./ProfileSkeleton";
 
 export default function Profile({
   tab,
@@ -24,7 +25,7 @@ export default function Profile({
   const { username } = useParams();
 
   if (!user) {
-    return <div>Carregando...</div>;
+    return <ProfileSkeleton />;
   }
 
   return (

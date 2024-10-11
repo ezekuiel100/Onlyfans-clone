@@ -8,7 +8,7 @@ export default function UserAvatar({ size }: { size: String }) {
   return (
     <img
       src={user?.imageUrl}
-      alt=''
+      alt='profile image'
       className={`rounded-full ${size == "small" && "w-14 h-14"} ${
         size == "normal" && "w-20 h-20"
       } border-2 select-none `}
