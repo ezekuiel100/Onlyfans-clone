@@ -5,10 +5,10 @@ import {
   VideoCameraIcon,
 } from "@heroicons/react/24/outline";
 
-export default function ProfileHeader({
+export default function ProfileStats({
   user,
 }: {
-  user: { fullName: string };
+  user: { fullName: string | null };
 }) {
   return (
     <div className='absolute top-0 py-1 px-4 select-none'>

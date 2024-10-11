@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from "react";
 import { useParams } from "next/navigation";
 import SubscribeButton from "./SubscribeButton";
 import ProfileDescription from "./ProfileDescription";
-import ProfileHeader from "./ProfileHeader";
+import ProfileStats from "./ProfileStats";
 
 export default function Profile({
   tab,
@@ -34,7 +34,7 @@ export default function Profile({
         <div className='absolute top-0 bg-black/20  w-full h-full'></div>
       </div>
 
-      <ProfileHeader user={user} />
+      <ProfileStats user={user} />
 
       <div className='relative grid grid-cols-2 -mt-7 ml-3  z-50 '>
         <UserAvatar size={"normal"} />
