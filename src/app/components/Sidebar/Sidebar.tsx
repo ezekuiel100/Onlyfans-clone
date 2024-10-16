@@ -1,7 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
 
+import Button from "../Button";
 import MenuList from "./MenuList";
-import Button from "./Button";
 
 export default function Sidebar() {
   return (

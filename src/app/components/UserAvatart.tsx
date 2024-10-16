@@ -2,7 +2,7 @@
 
 import { useUser } from "@clerk/nextjs";
 
-export default function UserAvatar({ size }: { size: String }) {
+export default function UserAvatar({ size }: { size: string }) {
   const { user } = useUser();
 
   return (

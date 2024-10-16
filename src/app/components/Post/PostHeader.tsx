@@ -1,5 +1,5 @@
-import UserAvatar from "./UserAvatart";
-import UserInfo from "./UserInfo";
+import UserAvatar from "../UserAvatart";
+import UserInfo from "../UserInfo";
 
 export default function PostHeader({
   user,

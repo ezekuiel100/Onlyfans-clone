@@ -4,14 +4,14 @@ import { useUser } from "@clerk/nextjs";
 import { useParams } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 
-import UserAvatar from "../components/UserAvatart";
-import SubscribeButton from "./SubscribeButton";
+import UserAvatar from "../UserAvatart";
+import SubscribeButton from "../SubscribeButton";
 import ProfileDescription from "./ProfileDescription";
 import ProfileStats from "./ProfileStats";
 import EditProfileButton from "./EditProfileButton";
-import ContentTabs from "./ContentTabs";
+import ContentTabs from "../ContentTabs";
 import ProfileHeader from "./ProfileHeader";
-import UserInfo from "./UserInfo";
+import UserInfo from "../UserInfo";
 import ProfileSkeleton from "./ProfileSkeleton";
 
 export default function Profile({

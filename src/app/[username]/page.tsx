@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Profile from "../components/Profile";
-import Posts from "../components/Post";
+import Profile from "../components/Profile/Profile";
+import Posts from "../components/Post/Post";
 
 export default function ProfilePage() {
   const [tab, setTab] = useState("Posts");

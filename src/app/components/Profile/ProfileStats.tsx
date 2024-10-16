@@ -3,7 +3,7 @@ import {
   PhotoIcon,
   VideoCameraIcon,
 } from "@heroicons/react/24/outline";
-import BackButton from "./BackButton";
+import BackButton from "../BackButton";
 import ProfileStatsItem from "./ProfileStatsItem";
 
 export default function ProfileStats({
