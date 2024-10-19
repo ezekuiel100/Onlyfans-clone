@@ -8,8 +8,8 @@ export default function NewPost() {
       <div className="flex justify-between p-2 ">
         <NewPostHeader />
         <div className="flex gap-2">
-          <Button>CLEAR</Button>
-          <Button variante="outline">POST</Button>
+          <Button variante="outline">CLEAR</Button>
+          <Button>POST</Button>
         </div>
       </div>
 
