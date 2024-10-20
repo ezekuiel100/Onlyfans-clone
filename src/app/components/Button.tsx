@@ -3,6 +3,7 @@ type ButtonProps = {
   variante?: "primary" | "secondary" | "danger" | "outline";
   size?: "sm" | "md" | "lg";
   disabled?: boolean;
+  onClick?: () => void;
 };
 
 const variants = {
@@ -24,12 +25,14 @@ export default function Button({
   variante = "primary",
   size = "md",
   disabled = false,
+  onClick,
 }: ButtonProps) {
   const disabledStyles = disabled ? "opacity-50 cursor-not-allowed" : "";
 
   return (
     <button
       disabled={disabled}
+      onClick={onClick}
       className={`${variants[variante]} ${sizes[size]} ${disabledStyles} font-semibold rounded-full uppercase transition-all `}
     >
       {children}
