@@ -3,11 +3,14 @@
 import Button from "@/app/components/Button";
 import NewPostHeader from "@/app/components/NewPostHeader";
 import NewPostTextarea from "@/app/components/NewPostTextarea";
+import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 
 export default function NewPost() {
   const [file, setFile] = useState<File | null>(null);
   const [postContent, setPostContent] = useState("");
+
+  const { user } = useUser();
 
   async function handlePost() {
     if (!file) return;
@@ -19,8 +22,15 @@ export default function NewPost() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ file: base64file, content: postContent }),
-    });
+      body: JSON.stringify({
+        file: base64file,
+        content: postContent,
+        fileName: file.name,
+        id: user?.id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   }
 
   function toBase64(file: File) {
