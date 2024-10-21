@@ -4,16 +4,21 @@ import path from "path";
 
 export async function POST(request: Request) {
   const res = await request.json();
-  const base64Data = res.file.split(",")[1];
 
-  const fileBuffer = Buffer.from(base64Data, "base64");
+  let base64Data, fileBuffer, uploadDir, filePath, mediaType;
 
-  const uploadDir = path.join(process.cwd(), "/src/data/image");
-  const filePath = path.join(uploadDir, res.fileName);
+  if (res.file) {
+    base64Data = res.file.split(",")[1];
 
-  fs.writeFileSync(filePath, fileBuffer);
+    fileBuffer = Buffer.from(base64Data, "base64");
 
-  const mediaType = res.file.slice(5, 10);
+    uploadDir = path.join(process.cwd(), "/src/data/image");
+    filePath = path.join(uploadDir, res.fileName);
+
+    fs.writeFileSync(filePath, fileBuffer);
+
+    mediaType = res.file.slice(5, 10);
+  }
 
   await prisma.post.create({
     data: {

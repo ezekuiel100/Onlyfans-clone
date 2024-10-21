@@ -4,33 +4,61 @@ import Button from "@/app/components/Button";
 import NewPostHeader from "@/app/components/NewPostHeader";
 import NewPostTextarea from "@/app/components/NewPostTextarea";
 import { useUser } from "@clerk/nextjs";
-import { useState } from "react";
+import { createContext, useState } from "react";
+
+type PostContextType = {
+  postContent: string;
+  setPostContent: (value: string) => void;
+  setFile: (file: File) => void;
+  fileImg: string | null;
+  setFileImg: (value: string | null) => void;
+  videoFile: string | null;
+  setVideoFile: (value: string | null) => void;
+};
+
+export const PostContext = createContext<PostContextType | null>(null);
 
 export default function NewPost() {
+  const [fileImg, setFileImg] = useState<string | null>(null);
+  const [videoFile, setVideoFile] = useState<string | null>(null);
+
   const [file, setFile] = useState<File | null>(null);
   const [postContent, setPostContent] = useState("");
 
   const { user } = useUser();
 
   async function handlePost() {
-    if (!file) return;
+    try {
+      let base64file;
 
-    const base64file = await toBase64(file);
+      if (!file) {
+        base64file = null;
+      } else {
+        base64file = await toBase64(file);
+      }
 
-    fetch("/api/createPost", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        file: base64file,
-        content: postContent,
-        fileName: file.name,
-        id: user?.id,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+      const response = await fetch("/api/createPost", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          file: base64file,
+          content: postContent,
+          fileName: file?.name,
+          id: user?.id,
+        }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setPostContent("");
+        setFileImg(null);
+        setVideoFile(null);
+        console.log(data);
+      }
+    } catch (error: unknown) {
+      console.log(error);
+    }
   }
 
   function toBase64(file: File) {
@@ -54,11 +82,19 @@ export default function NewPost() {
         </div>
       </div>
 
-      <NewPostTextarea
-        postContent={postContent}
-        setPostContent={setPostContent}
-        setFile={setFile}
-      />
+      <PostContext.Provider
+        value={{
+          postContent,
+          setPostContent,
+          setFile,
+          fileImg,
+          setFileImg,
+          videoFile,
+          setVideoFile,
+        }}
+      >
+        <NewPostTextarea />
+      </PostContext.Provider>
 
       <div className="bg-gray-100 h-2 "></div>
     </div>

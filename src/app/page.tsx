@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { SignedIn, SignedOut, SignIn, useUser } from "@clerk/nextjs";
+import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 import Hero from "./components/hero";
 import Posts from "./components/Post/Post";
-import NewPost from "./components/HomePost";
+import NewPost from "./posts/create/page";
 
 export default function Home() {
   const { isSignedIn, user } = useUser();

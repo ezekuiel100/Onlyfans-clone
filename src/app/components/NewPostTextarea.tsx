@@ -1,21 +1,19 @@
 "use client";
 
 import { PhotoIcon } from "@heroicons/react/24/outline";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { usePostContent } from "@/context/usePostContent";
 
-type NewPostTextareaProps = {
-  postContent: string;
-  setPostContent: Dispatch<SetStateAction<string>>;
-  setFile: Dispatch<SetStateAction<File | null>>;
-};
-
-export default function NewPostTextarea({
-  postContent,
-  setPostContent,
-  setFile,
-}: NewPostTextareaProps) {
-  const [fileImg, setFileImg] = useState<string | null>(null);
-  const [videoFile, setVideoFile] = useState<string | null>(null);
+export default function NewPostTextarea() {
+  const {
+    postContent,
+    setPostContent,
+    setFile,
+    fileImg,
+    setFileImg,
+    videoFile,
+    setVideoFile,
+  } = usePostContent();
   const ref = useRef<HTMLInputElement | null>(null);
 
   function handleFile() {
