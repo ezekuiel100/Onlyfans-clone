@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { SignedIn, SignedOut, useUser } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignIn, useUser } from "@clerk/nextjs";
 import Hero from "./components/hero";
 import Posts from "./components/Post/Post";
-import NewPost from "./posts/create/page";
+import HomePost from "./components/HomePost";
 
 export default function Home() {
   const { isSignedIn, user } = useUser();
@@ -37,7 +37,7 @@ export default function Home() {
 
       <SignedIn>
         <div className="w-full lg:max-w-[38rem] border-r pb-10">
-          <NewPost />
+          <HomePost />
           <Posts />
         </div>
       </SignedIn>

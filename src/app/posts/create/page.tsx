@@ -54,6 +54,7 @@ export default function NewPost() {
         setPostContent("");
         setFileImg(null);
         setVideoFile(null);
+        setFile(null);
         console.log(data);
       }
     } catch (error: unknown) {
