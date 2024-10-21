@@ -4,7 +4,7 @@ import fs from "fs";
 export async function POST(request: Request) {
   const res = await request.json();
 
-  let base64Data, fileBuffer, filePath, mediaType;
+  let base64Data, fileBuffer, mediaType, filePath;
 
   if (res.file) {
     base64Data = res.file.split(",")[1];
@@ -13,9 +13,11 @@ export async function POST(request: Request) {
 
     mediaType = res.file.slice(5, 10);
 
-    filePath = `public/${mediaType}s/` + res.fileName;
+    const path = `public/${mediaType}s/` + res.fileName;
 
-    fs.writeFileSync(filePath, fileBuffer);
+    fs.writeFileSync(path, fileBuffer);
+
+    filePath = `${mediaType}s/${res.fileName}`;
   }
 
   await prisma.post.create({
