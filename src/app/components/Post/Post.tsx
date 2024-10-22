@@ -5,36 +5,44 @@ import PostHeader from "./PostHeader";
 import PostActions from "./PostActions";
 import { useEffect, useState } from "react";
 
+type PostsType = {
+  id: string;
+  text: string;
+  mediaUrl: string;
+  date: string;
+};
+
 export default function Post() {
   const { user } = useUser();
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostsType[]>([]);
+
+  // console.log(filteredPosts);
 
   useEffect(() => {
     fetch("/api/getPosts")
       .then((res) => res.json())
-      .then((data) => setPosts(data));
+      .then((data) => setPosts(data))
+      .catch((error) => console.log(error));
   }, []);
 
   if (!user) {
     return <PostSkeleton />;
   }
 
-  if (!posts) return;
-
-  console.log(posts);
+  if (!posts.length) return;
 
   return (
-    <div className="border-b ">
-      {posts.map((post) => {
+    <>
+      {posts.map((post: PostsType) => {
         return (
-          <div key={post.id}>
+          <div key={post.id} className="border-b ">
             <PostHeader user={user} />
             <p className="px-2 pb-2">{post.text}</p>
-            <img src={post.mediaUrl} />
+            <img src={post.mediaUrl} className="w-full" />
             <PostActions />
           </div>
         );
       })}
-    </div>
+    </>
   );
 }
