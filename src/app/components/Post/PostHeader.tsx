@@ -10,7 +10,6 @@ type PostProps = {
 
 export default function PostHeader({ user, date }: PostProps) {
   const data = new Date(date);
-
   const formattedDate = formatDistanceToNow(data, { locale: ptBR });
 
   return (

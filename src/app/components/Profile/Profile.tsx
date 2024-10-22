@@ -34,7 +34,7 @@ export default function Profile({
 
       <ProfileStats user={user} />
 
-      <div className='relative grid grid-cols-2 -mt-7 ml-3  z-50 '>
+      <div className="relative grid grid-cols-2 -mt-7 ml-3  z-50 ">
         <UserAvatar size={"normal"} />
         <EditProfileButton />
 
@@ -43,11 +43,11 @@ export default function Profile({
 
       <ProfileDescription />
 
-      <div className='bg-gray-100 h-2 border-t'></div>
+      <div className="bg-gray-100 h-2 border-t"></div>
 
       {username != user.username && <SubscribeButton />}
 
-      <div className='bg-gray-100 h-2 border-t'></div>
+      <div className="bg-gray-100 h-2 border-t"></div>
 
       <ContentTabs tab={tab} setTab={setTab} />
     </>
