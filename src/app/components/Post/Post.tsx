@@ -9,14 +9,13 @@ type PostsType = {
   id: string;
   text: string;
   mediaUrl: string;
+  mediaType: string | null;
   date: string;
 };
 
 export default function Post() {
   const { user } = useUser();
   const [posts, setPosts] = useState<PostsType[]>([]);
-
-  // console.log(filteredPosts);
 
   useEffect(() => {
     fetch("/api/getPosts")
@@ -38,7 +37,14 @@ export default function Post() {
           <div key={post.id} className="border-b ">
             <PostHeader user={user} />
             <p className="px-2 pb-2">{post.text}</p>
-            <img src={post.mediaUrl} className="w-full" />
+
+            {post.mediaType === "image" && (
+              <img src={post.mediaUrl} className="w-full" />
+            )}
+
+            {post.mediaType === "video" && (
+              <video src={post.mediaUrl} controls className="w-full" />
+            )}
             <PostActions />
           </div>
         );
