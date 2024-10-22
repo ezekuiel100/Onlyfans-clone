@@ -35,7 +35,7 @@ export default function Post() {
       {posts.map((post: PostsType) => {
         return (
           <div key={post.id} className="border-b ">
-            <PostHeader user={user} />
+            <PostHeader user={user} date={post.date} />
             <p className="px-2 pb-2">{post.text}</p>
 
             {post.mediaType === "image" && (
