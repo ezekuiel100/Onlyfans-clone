@@ -4,7 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import { useParams } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 
-import UserAvatar from "../UserAvatart";
+import UserAvatar from "../UserAvatar";
 import SubscribeButton from "../SubscribeButton";
 import ProfileDescription from "./ProfileDescription";
 import ProfileStats from "./ProfileStats";
@@ -34,7 +34,7 @@ export default function Profile({
 
       <ProfileStats user={user} />
 
-      <div className="relative grid grid-cols-2 -mt-7 ml-3  z-50 ">
+      <div className="relative grid grid-cols-2 -mt-7 ml-3 z-50">
         <UserAvatar size={"normal"} />
         <EditProfileButton />
 

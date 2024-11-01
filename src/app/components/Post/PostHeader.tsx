@@ -1,4 +1,4 @@
-import UserAvatar from "../UserAvatart";
+import UserAvatar from "../UserAvatar";
 import UserInfo from "../UserInfo";
 import { formatDistanceToNow } from "date-fns";
 import { ptBR } from "date-fns/locale";
