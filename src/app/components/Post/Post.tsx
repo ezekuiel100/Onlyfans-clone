@@ -34,7 +34,7 @@ export default function Post() {
     <>
       {posts.map((post: PostsType) => {
         return (
-          <div key={post.id} className="border-b ">
+          <div key={post.id} className="border-b py-1">
             <PostHeader user={user} date={post.date} />
             <p className="px-2 pb-2">{post.text}</p>
 

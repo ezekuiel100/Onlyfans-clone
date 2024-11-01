@@ -23,7 +23,7 @@ export default function MenuList() {
     {
       text: "Profile",
       icon: <UserIcon className="size-6" />,
-      href: user.username,
+      href: user && user.username,
     },
     {
       text: "Settings",
