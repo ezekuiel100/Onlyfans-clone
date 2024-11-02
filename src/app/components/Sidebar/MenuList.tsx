@@ -18,17 +18,17 @@ export default function MenuList() {
     {
       text: "Notifications",
       icon: <BellIcon className="size-6" />,
-      href: "notifications",
+      href: "/notifications",
     },
     {
       text: "Profile",
       icon: <UserIcon className="size-6" />,
-      href: user && user.username,
+      href: user && `/${user.username}`,
     },
     {
       text: "Settings",
       icon: <Cog6ToothIcon className="size-6" />,
-      href: "settings",
+      href: "/settings",
     },
   ];
 

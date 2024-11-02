@@ -45,9 +45,12 @@ export default function Profile({
 
       <div className="bg-gray-100 h-2 border-t"></div>
 
-      {username != user.username && <SubscribeButton />}
-
-      <div className="bg-gray-100 h-2 border-t"></div>
+      {username != user.username && (
+        <>
+          <SubscribeButton />
+          <div className="bg-gray-100 h-2 border-t"></div>{" "}
+        </>
+      )}
 
       <ContentTabs tab={tab} setTab={setTab} />
     </>
