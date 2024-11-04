@@ -16,7 +16,8 @@ model User {
   username String? @unique
   name     String?
   password String?
-
+  stripeAccountId String?
+  
   posts        Post[]
   comments     Comment[]
   likes        Like[]

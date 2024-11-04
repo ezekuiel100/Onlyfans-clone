@@ -2,6 +2,7 @@
 import {
   BellIcon,
   Cog6ToothIcon,
+  CurrencyDollarIcon,
   HomeIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
@@ -29,6 +30,11 @@ export default function MenuList() {
       text: "Settings",
       icon: <Cog6ToothIcon className="size-6" />,
       href: "/settings",
+    },
+    {
+      text: "Become a creator",
+      icon: <CurrencyDollarIcon className="size-6" />,
+      href: "/creator",
     },
   ];
 
