@@ -20,8 +20,14 @@ export default function BecomeCreator() {
       },
       body: JSON.stringify(email),
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((response) => {
+        if (!response.ok) return;
+
+        return response.json();
+      })
+      .then((data) => {
+        window.location.href = data?.url;
+      })
       .catch((error) => console.log(error));
   }
 

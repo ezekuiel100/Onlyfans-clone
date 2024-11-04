@@ -10,13 +10,11 @@ export async function POST(req: Request) {
     select: { stripeAccountId: true },
   });
 
-  if (user?.stripeAccountId) {
-    return Response.json({
-      message: "Account already has payment information.",
-    });
-  }
+  let account = { id: user?.stripeAccountId };
 
-  const account = await stripe.accounts.create({});
+  if (!user?.stripeAccountId) {
+    account = await stripe.accounts.create({ type: "express" });
+  }
 
   await prisma.user.update({
     where: { email },
@@ -24,9 +22,9 @@ export async function POST(req: Request) {
   });
 
   const accountLink = await stripe.accountLinks.create({
-    account: account.id,
+    account: `${account.id}`,
     refresh_url: `${origin}/refresh/${account.id}`,
-    return_url: `${origin}/return/${account.id}`,
+    return_url: `${origin}`,
     type: "account_onboarding",
   });
 
