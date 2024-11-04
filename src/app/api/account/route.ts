@@ -3,6 +3,7 @@ import { stripe } from "@/lib/utils";
 
 export async function POST(req: Request) {
   const email = await req.json();
+  const origin = req.headers.get("origin");
 
   const user = await prisma.user.findUnique({
     where: { email },
@@ -17,10 +18,17 @@ export async function POST(req: Request) {
 
   const account = await stripe.accounts.create({});
 
-  const newUser = await prisma.user.update({
+  await prisma.user.update({
     where: { email },
     data: { stripeAccountId: account.id },
   });
 
-  return Response.json(newUser);
+  const accountLink = await stripe.accountLinks.create({
+    account: account.id,
+    refresh_url: `${origin}/refresh/${account.id}`,
+    return_url: `${origin}/return/${account.id}`,
+    type: "account_onboarding",
+  });
+
+  return Response.json({ url: accountLink.url });
 }

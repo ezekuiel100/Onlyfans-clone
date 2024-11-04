@@ -15,6 +15,9 @@ export default function BecomeCreator() {
   function createAccount() {
     fetch("/api/account", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(email),
     })
       .then((response) => response.json())
