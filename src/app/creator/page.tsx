@@ -26,7 +26,9 @@ export default function BecomeCreator() {
         return response.json();
       })
       .then((data) => {
-        window.location.href = data?.url;
+        if (data.url) {
+          window.location.href = data?.url;
+        }
       })
       .catch((error) => console.log(error));
   }
@@ -35,7 +37,7 @@ export default function BecomeCreator() {
     <div className="w-full lg:max-w-[38rem] border-r pb-10  ">
       <div className="py-4 space-y-6 flex flex-col items-center">
         <h2 className="text-xl">Add information to start accepting money</h2>
-        <Button onClick={createAccount}>Create an account!</Button>
+        <Button onClick={createAccount}> Add information</Button>
       </div>
     </div>
   );
