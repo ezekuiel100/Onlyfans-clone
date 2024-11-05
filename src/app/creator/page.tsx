@@ -1,10 +1,7 @@
 "use client";
 
 import { useUser } from "@clerk/nextjs";
-import {
-  ConnectAccountOnboarding,
-  ConnectComponentsProvider,
-} from "@stripe/react-connect-js";
+
 import Button from "../components/Button";
 
 export default function BecomeCreator() {
@@ -27,7 +24,7 @@ export default function BecomeCreator() {
       })
       .then((data) => {
         if (data.url) {
-          window.location.href = data?.url;
+          window.location.href = data.url;
         }
       })
       .catch((error) => console.log(error));
