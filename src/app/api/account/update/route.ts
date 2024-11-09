@@ -9,12 +9,12 @@ export async function POST(req: Request) {
     select: { stripeAccountId: true },
   });
 
-  const accountLink = await stripe.accountLinks.create({
-    account: `${user?.stripeAccountId}`,
-    refresh_url: "http://localhost:3000/",
-    return_url: "http://localhost:3000/",
-    type: "account_update",
-  });
+  if (!user?.stripeAccountId)
+    return Response.json({ message: "User doesn't exist" });
 
-  return Response.json({ url: accountLink.url });
+  const loginLink = await stripe.accounts.createLoginLink(
+    user?.stripeAccountId
+  );
+
+  return Response.json({ url: loginLink.url });
 }

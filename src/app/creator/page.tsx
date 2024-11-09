@@ -46,8 +46,7 @@ export default function BecomeCreator() {
           window.location.href = data.url;
         }
       })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
+      .catch((error) => console.log(error));
   }
 
   function accountDetails() {
@@ -61,9 +60,15 @@ export default function BecomeCreator() {
       body: JSON.stringify(email),
     })
       .then((res) => res.json())
-      .then((data) => (window.location.href = data.url))
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
+      .then((data) => {
+        if (data.url) {
+          window.location.href = data.url;
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setIsLoading(false);
+      });
   }
 
   return (
@@ -77,7 +82,7 @@ export default function BecomeCreator() {
               pagamentos.
             </p>
             <Button onClick={accountDetails} disabled={isLoading}>
-              Gerenciar Conta
+              Acessa o Dashboard
             </Button>
           </>
         ) : (

@@ -5,7 +5,6 @@ export async function POST(req: Request) {
   try {
     const email = await req.json();
     const origin = req.headers.get("origin");
-
     const user = await prisma.user.findUnique({
       where: { email },
       select: { stripeAccountId: true },
@@ -14,7 +13,19 @@ export async function POST(req: Request) {
     let account = { id: user?.stripeAccountId };
 
     if (!user?.stripeAccountId) {
-      account = await stripe.accounts.create({ type: "express" });
+      account = await stripe.accounts.create({
+        country: "BR",
+        type: "express",
+        capabilities: {
+          card_payments: {
+            requested: true,
+          },
+          transfers: {
+            requested: true,
+          },
+        },
+        business_type: "individual",
+      });
 
       await prisma.user.update({
         where: { email },
